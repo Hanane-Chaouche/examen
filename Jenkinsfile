@@ -2,22 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Vérifier l\'environnement') {
+        stage('Installer les dépendances') {
             steps {
-                echo '🔍 Affichage des versions et variables'
-                bat 'echo %PATH%'
-                bat 'java -version'
-                bat 'python --version'
+                bat 'pip install -r requirements.txt'
             }
         }
 
-        stage('Exécuter les scripts') {
+        stage('Exécuter le script Python') {
             steps {
-                echo '🚀 Exécution du script Python'
-                bat 'python hello.py'
+                bat 'python scraper.py'
+            }
+        }
 
-                echo '🛠️ Compilation et exécution du programme Java'
-                bat 'javac HelloWorld.java && java HelloWorld'
+        stage('Archiver le fichier CSV') {
+            steps {
+                archiveArtifacts artifacts: 'data.csv', fingerprint: true
             }
         }
     }
