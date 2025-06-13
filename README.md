@@ -36,20 +36,6 @@ Le pipeline CI/CD est défini dans le fichier `Jenkinsfile` et exécute automati
 3. Génération du fichier `data.csv` contenant la liste des langages
 4. Archivage de `data.csv` en tant qu’artefact dans Jenkins
 
----
-
-## Tester localement
-
-Avant de lancer sur Jenkins, vous pouvez tester en local :
-
-```bash
-pip install -r requirements.txt
-python scraper.py
-```
-
-Vous obtiendrez un fichier `data.csv` dans le répertoire courant.
-
----
 
 ## Exemple de sortie
 
